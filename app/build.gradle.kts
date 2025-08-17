@@ -66,4 +66,10 @@ dependencies {
     implementation(libs.converter.gson)
     //datastore
     implementation(libs.androidx.datastore.preferences)
+    //viewmodel compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    //hilt navigation
+    implementation(libs.androidx.hilt.navigation.compose)
+    //compose navigation
+    implementation(libs.androidx.navigation.compose)
 }
