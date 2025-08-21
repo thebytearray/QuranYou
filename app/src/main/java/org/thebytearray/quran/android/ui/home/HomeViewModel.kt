@@ -1,5 +1,6 @@
 package org.thebytearray.quran.android.ui.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,11 +17,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getSurahListUseCase: GetSurahListUseCase
+    private val getSurahListUseCase: GetSurahListUseCase,
 ) : ViewModel() {
 
     private val _surahList = MutableStateFlow<List<Surah>>(emptyList())
     val surahList: StateFlow<List<Surah>> get() = _surahList.asStateFlow()
+
 
     init {
         loadSurahList()
@@ -31,6 +33,8 @@ class HomeViewModel @Inject constructor(
             _surahList.value = getSurahListUseCase()
         }
     }
+
+
 
 
 

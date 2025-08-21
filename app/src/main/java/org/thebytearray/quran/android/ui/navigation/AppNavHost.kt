@@ -1,8 +1,6 @@
 package org.thebytearray.quran.android.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,7 +10,7 @@ import org.thebytearray.quran.android.ui.settings.SettingsScreen
 import org.thebytearray.quran.android.ui.surah.SurahScreen
 
 @Composable
-fun AppNavHost(modifier: Modifier = Modifier, navController: NavHostController) {
+fun AppNavHost(navController: NavHostController) {
 
     NavHost(
         navController = navController, startDestination = Route.Home.route
@@ -20,17 +18,19 @@ fun AppNavHost(modifier: Modifier = Modifier, navController: NavHostController) 
         composable(Route.Home.route) {
             HomeScreen(onSettingsClick = {
                 navController.navigate(Route.Settings.route)
+            }, onSurahClick = {
+                navController.navigate("surah/$it")
             })
 
         }
         composable(Route.Settings.route) {
-            SettingsScreen(onNavigationClick = {
+            SettingsScreen(navController, onNavigationClick = {
                 navController.popBackStack()
             })
 
         }
         composable(Route.Surah.route) {
-            SurahScreen(onNavigationClick = { navController.popBackStack() })
+            SurahScreen(navController,onNavigationClick = { navController.popBackStack() })
         }
 
     }

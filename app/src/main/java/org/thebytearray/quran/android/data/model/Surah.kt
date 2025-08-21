@@ -3,6 +3,7 @@ package org.thebytearray.quran.android.data.model
 import com.google.gson.annotations.SerializedName
 
 data class Surah(
+    val index: Int? = null,
     @SerializedName("surahName")
     val name: String,
 

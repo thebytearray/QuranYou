@@ -1,6 +1,7 @@
 package org.thebytearray.quran.android.domain.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.thebytearray.quran.android.data.model.Surah
 import org.thebytearray.quran.android.domain.model.ArabicTextType
 import org.thebytearray.quran.android.domain.model.Reciter
 import org.thebytearray.quran.android.domain.model.Translation

@@ -4,6 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.thebytearray.quran.android.domain.model.ArabicTextType
@@ -23,7 +24,6 @@ class UserPreferencesDataSource @Inject constructor(
         val PREF_ARABIC_TYPE = stringPreferencesKey("arabic_type")
     }
 
-
     val reciterFlow: Flow<Reciter> = dataStore.data.map { prefs ->
         val name: String? = prefs[Keys.PREF_RECITER]
         Reciter.fromName(name ?: "")
@@ -40,6 +40,7 @@ class UserPreferencesDataSource @Inject constructor(
 
     }
 
+
     suspend fun saveReciter(reciter: Reciter) {
         dataStore.edit { prefs ->
             prefs[Keys.PREF_RECITER] = reciter.name
@@ -53,12 +54,9 @@ class UserPreferencesDataSource @Inject constructor(
         }
     }
 
-
     suspend fun saveArabicType(type: ArabicTextType) {
         dataStore.edit { prefs ->
             prefs[Keys.PREF_ARABIC_TYPE] = type.name
         }
     }
-
-
 }

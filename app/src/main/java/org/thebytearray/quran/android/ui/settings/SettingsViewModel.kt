@@ -23,33 +23,45 @@ class SettingsViewModel @Inject constructor(
         viewModelScope, SharingStarted.Lazily, Reciter.AL_FASY
     )
 
-    val translationLanguage: StateFlow<Translation> = repository.selectedTranslation.stateIn(
+    val selectedTranslation: StateFlow<Translation> = repository.selectedTranslation.stateIn(
         viewModelScope, SharingStarted.Lazily, Translation.ENGLISH
     )
 
-    val arabicTextType: StateFlow<ArabicTextType> = repository.selectedArabicType.stateIn(
+    val selectedArabicType: StateFlow<ArabicTextType> = repository.selectedArabicType.stateIn(
         viewModelScope, SharingStarted.Lazily, ArabicTextType.NO_TASHKEEL
     )
 
 
-    fun onReciterSelected(reciter: Reciter) {
+    fun updateReciter(reciter: Reciter) {
         viewModelScope.launch {
             repository.saveReciter(reciter = reciter)
         }
     }
 
+    fun onReciterSelected(reciter: Reciter) {
+        updateReciter(reciter)
+    }
 
-    fun onTranslationSelected(lang: Translation) {
+
+    fun updateTranslation(lang: Translation) {
         viewModelScope.launch {
             repository.saveTranslation(lang = lang)
         }
     }
 
+    fun onTranslationSelected(lang: Translation) {
+        updateTranslation(lang)
+    }
 
-    fun onArabicTextTypeSelected(type: ArabicTextType) {
+
+    fun updateArabicTextType(type: ArabicTextType) {
         viewModelScope.launch {
             repository.saveArabicType(type)
         }
+    }
+
+    fun onArabicTextTypeSelected(type: ArabicTextType) {
+        updateArabicTextType(type)
     }
 
 

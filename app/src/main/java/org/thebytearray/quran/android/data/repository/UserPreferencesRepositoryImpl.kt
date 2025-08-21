@@ -2,6 +2,7 @@ package org.thebytearray.quran.android.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import org.thebytearray.quran.android.data.local.UserPreferencesDataSource
+import org.thebytearray.quran.android.data.model.Surah
 import org.thebytearray.quran.android.domain.model.ArabicTextType
 import org.thebytearray.quran.android.domain.model.Reciter
 import org.thebytearray.quran.android.domain.model.Translation
@@ -18,6 +19,8 @@ class UserPreferencesRepositoryImpl @Inject constructor(
     override val selectedArabicType: Flow<ArabicTextType>
         get() = dataSource.arabicTextTypeFlow
 
+
+
     override suspend fun saveReciter(reciter: Reciter) {
         dataSource.saveReciter(reciter)
     }
@@ -29,6 +32,8 @@ class UserPreferencesRepositoryImpl @Inject constructor(
     override suspend fun saveArabicType(type: ArabicTextType) {
         dataSource.saveArabicType(type)
     }
+
+
 
 
 }
