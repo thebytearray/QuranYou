@@ -49,9 +49,6 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun onTranslationSelected(lang: Translation) {
-        updateTranslation(lang)
-    }
 
 
     fun updateArabicTextType(type: ArabicTextType) {
@@ -60,9 +57,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun onArabicTextTypeSelected(type: ArabicTextType) {
-        updateArabicTextType(type)
-    }
+
 
 
 }
